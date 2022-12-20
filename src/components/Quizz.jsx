@@ -3,6 +3,8 @@ import { Portada } from './Portada'
 import { Puntuacion } from './Puntuacion'
 //Se importan las preguntas del quizz
 import { preguntas } from '../preguntas/preguntas'
+import { Respuestas } from './Respuestas'
+import { Resultados } from './Resultados'
 
 
 //Componente hijo de Portada
@@ -17,7 +19,9 @@ export const Quizz=(props)=>{
     const [showResults,setShowResults]=useState(false)
     //state que evita repeticiones al contar las puntuaciones
     const [hayRepes,setHayRepes]=useState(false)
-    console.log(preguntas)
+    //state para controlar cuando se muestra correcto el botón de selection (verde ) 
+    const [esCorrecto,setEsCorrecto]=useState(false)
+
     const volverMenu=()=>{
         //se cambia el state a false para volver al menú principal
         setShowReturn(false)
@@ -27,8 +31,14 @@ export const Quizz=(props)=>{
     const siguientePregunta=()=>{
         setPregunta(pregunta+1)
     }
-    useEffect(()=>{
+    const modificarVariables=()=>{
         setHayRepes(false)
+        setEsCorrecto(false)
+        console.log(esCorrecto)
+    }
+    useEffect(()=>{
+        modificarVariables()
+        
     },[pregunta])
     return(
         showReturn?(
@@ -43,34 +53,13 @@ export const Quizz=(props)=>{
                         </div>
                     </div>
                     {showResults===false?(
-                            <div className="quizz_container">
+                        <div className="quizz_container">
                             <div className="quizz_questions">Pregunta {pregunta+1}</div>
                             <div className="quiz_info">
                                 <div>
                                     <h3>{preguntas[pregunta].titulo}</h3>
                                 </div>
-                                <div>
-                                    {preguntas[pregunta].opciones.map((i)=>{
-                                        return(
-                                            
-                                            <div className="respuestas">
-                                                <div>
-                                                    
-                                                    {i.textoRespuesta}
-                                                </div>
-                                                <div>
-                                                    <button className="btn" id="buttonStyle2" onClick={()=>{
-                                                        if(i.isCorrect===true && hayRepes===false){
-                                                            setPuntuacion(puntuacion+1)
-                                                            console.log(puntuacion)
-                                                            setHayRepes(true)
-                                                        }
-                                                    }}>Seleccionar</button>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
+                                <Respuestas pregunta={pregunta} hayRepes={hayRepes} puntuacion={puntuacion} esCorrecto={esCorrecto} setEsCorrecto={setEsCorrecto} setHayRepes={setHayRepes} setPuntuacion={setPuntuacion}></Respuestas>
                             
                             </div>
                             {pregunta!=preguntas.length-1? (
@@ -78,11 +67,7 @@ export const Quizz=(props)=>{
                                     <button className="btn" id="buttonStyle" onClick={siguientePregunta}>Siguiente</button>
                                 </div>
                             ):(
-                                <div>
-                                    <button id="buttonStyle" onClick={()=>{
-                                        setShowResults(true)
-                                    }}>Ver resultados</button>
-                                </div>
+                                <Resultados setShowResults={setShowResults}></Resultados>
                             )}
                         
                         </div>
