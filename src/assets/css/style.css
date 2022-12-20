@@ -1,0 +1,89 @@
+/* FONT */
+@font-face {
+    font-family: "fuenteNavidad";
+    src: url("../fonts/fuente.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+/*PORTADA*/
+#portada_container{
+    padding: 20px 50px 70px 20px;
+    color:#07255a;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.portada_title{
+    font-family: "fuenteNavidad";
+    font-size: 60px;
+
+}
+#buttonStyle{
+    background-color: #07255a;
+    padding:10px 50px 10px 50px;
+    border-radius: 30px;
+    color:  #f4dcdd;
+}
+/*QUIZZ*/
+#quizz_container{
+    
+    padding: 20px 50px 70px 20px;
+    color:#07255a;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: url(../images/fondoNavidad.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+
+.quizz_title{
+    font-size: 60px;
+    color: #07255a;
+    background-color: #f4dcdd;
+    padding: 10px;
+    border-radius: 20px;
+    margin:20px
+
+}
+.quizz_container{
+    background-color: #07255a;
+    border-radius: 20px;
+    color: #f4dcdd;
+    padding: 20px;
+}
+.respuestas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:10px;
+    padding: 10px;
+    justify-content: flex-end;
+    align-items: center;
+}
+#buttonStyle2{
+    background-color:  #e38ab9;
+    padding:10px 50px 10px 50px;
+    border-radius: 30px;
+    color:  #07255a;
+}
+/* PUNTUACIÓN*/
+
+.puntuacion_container{
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #07255a;
+    color: #f4dcdd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
